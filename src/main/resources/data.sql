@@ -1,0 +1,1 @@
+INSERT INTO quotes (id,prefix,first_name,last_name,telephone,address_line1,address_line2,city,vehicle_type,additional_drivers,commercial,registered_state,current_value,date_registered) VALUES (1,'Mr.','Test','Testington','1234567890','1 Fake House','123 Fake Street','Yemen City','1000','1','yes','yes','10000','12/11/2021');

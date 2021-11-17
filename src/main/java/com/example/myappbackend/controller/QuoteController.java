@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 public class QuoteController {
 
     public static final String ID_NOT_FOUND_ERROR_MSG = "Quote not found, id:";
