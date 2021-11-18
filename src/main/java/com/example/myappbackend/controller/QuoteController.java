@@ -26,6 +26,7 @@ public class QuoteController {
         return quoteService.findAll();
     }
 
+
     @PostMapping("/quotes")
     Quote save(@RequestBody Quote quote){
         return quoteService.save(quote);
