@@ -1,0 +1,25 @@
+.row {
+    margin: 20px;
+}
+
+#vehicleValue{
+    width: 100%;
+}
+
+#adminButton{
+    background-color: green;
+    border-color: green;
+    margin: auto;
+}
+
+.header{
+    text-align: center;
+    background-color: blue;
+    color: white;
+    padding: 20px;
+}
+
+#contain{
+    width: 75%;
+    margin: 0 auto;
+}
