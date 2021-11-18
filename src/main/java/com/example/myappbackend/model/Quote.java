@@ -28,10 +28,10 @@ public class Quote {
     public Quote(){
     }
 
-    public Quote(long id, String prefix, String firstName, String lastName, String telephone, String addressLine1,
+    public Quote(String prefix, String firstName, String lastName, String telephone, String addressLine1,
                  String addressLine2, String city, String vehicleType, String engineSize, String additionalDrivers,
                  String commercial, String registeredState, String currentValue, String dateRegistered) {
-        this.id = id;
+
         this.prefix = prefix;
         this.firstName = firstName;
         this.lastName = lastName;
