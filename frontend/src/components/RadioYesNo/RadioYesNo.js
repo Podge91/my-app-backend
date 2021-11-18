@@ -14,8 +14,8 @@ const RadioYesNo = ({ label, ...props}) => {
       {...field} {...props}
       autoComplete="off">
     <option value="">Select</option>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
+    <option value="true">Yes</option>
+    <option value="false">No</option>
   </select>
   <ErrorMessage name={field.name}/>
   <br/>

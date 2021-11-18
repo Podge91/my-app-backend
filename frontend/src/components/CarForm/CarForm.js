@@ -36,8 +36,8 @@ function CarForm(){
     vehicleType: Yup.string().required('Please select vehicle type.'),
     engineSize: Yup.string().required('Please select engine size.'),
     additionalDrivers: Yup.string().required('Required'),
-    commercial: Yup.string().required('Required'),
-    registeredState: Yup.string().required('Required'),
+    commercial: Yup.boolean().required('Required'),
+    registeredState: Yup.boolean().required('Required'),
     currentValue: Yup.number().required('Required').positive().integer(),
     telephone: Yup.string().required('Required'),
     dateRegistered: Yup.date().required('Please Enter a Date.').max(date),
@@ -56,9 +56,9 @@ function CarForm(){
   vehicleType:'',
   engineSize:'',
   additionalDrivers:'',
-  commercial:'',
-  registeredState:'',
-  currentValue:'25000',
+  commercial:false,
+  registeredState:false,
+  currentValue:25000,
   telephone:'',
   dateRegistered:''
 }}

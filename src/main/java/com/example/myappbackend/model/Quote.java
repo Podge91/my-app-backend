@@ -20,9 +20,9 @@ public class Quote {
     private String vehicleType;
     private String engineSize;
     private String additionalDrivers;
-    private String commercial;
-    private String registeredState;
-    private String currentValue;
+    private Boolean commercial;
+    private Boolean registeredState;
+    private Double currentValue;
     private String dateRegistered;
 
     public Quote(){
@@ -30,8 +30,28 @@ public class Quote {
 
     public Quote(String prefix, String firstName, String lastName, String telephone, String addressLine1,
                  String addressLine2, String city, String vehicleType, String engineSize, String additionalDrivers,
-                 String commercial, String registeredState, String currentValue, String dateRegistered) {
+                 Boolean commercial, Boolean registeredState, Double currentValue, String dateRegistered) {
 
+        this.prefix = prefix;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.telephone = telephone;
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+        this.city = city;
+        this.vehicleType = vehicleType;
+        this.engineSize = engineSize;
+        this.additionalDrivers = additionalDrivers;
+        this.commercial = commercial;
+        this.registeredState = registeredState;
+        this.currentValue = currentValue;
+        this.dateRegistered = dateRegistered;
+    }
+
+    public Quote(long id, String prefix, String firstName, String lastName, String telephone, String addressLine1,
+                 String addressLine2, String city, String vehicleType, String engineSize, String additionalDrivers,
+                 Boolean commercial, Boolean registeredState, Double currentValue, String dateRegistered) {
+        this.id = id;
         this.prefix = prefix;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -136,27 +156,27 @@ public class Quote {
         this.additionalDrivers = additionalDrivers;
     }
 
-    public String getCommercial() {
+    public Boolean getCommercial() {
         return commercial;
     }
 
-    public void setCommercial(String commercial) {
+    public void setCommercial(Boolean commercial) {
         this.commercial = commercial;
     }
 
-    public String getRegisteredState() {
+    public Boolean getRegisteredState() {
         return registeredState;
     }
 
-    public void setRegisteredState(String registeredState) {
+    public void setRegisteredState(Boolean registeredState) {
         this.registeredState = registeredState;
     }
 
-    public String getCurrentValue() {
+    public double getCurrentValue() {
         return currentValue;
     }
 
-    public void setCurrentValue(String currentValue) {
+    public void setCurrentValue(Double currentValue) {
         this.currentValue = currentValue;
     }
 

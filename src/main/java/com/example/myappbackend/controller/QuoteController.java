@@ -26,7 +26,6 @@ public class QuoteController {
         return quoteService.findAll();
     }
 
-
     @PostMapping("/quotes")
     Quote save(@RequestBody Quote quote){
         return quoteService.save(quote);
@@ -42,7 +41,20 @@ public class QuoteController {
                     HttpStatus.NOT_FOUND, ID_NOT_FOUND_ERROR_MSG + quote.getId(), nse
             );
         }
+        quoteToUpdate.setPrefix(quote.getPrefix());
+        quoteToUpdate.setFirstName(quote.getFirstName());
+        quoteToUpdate.setLastName(quote.getLastName());
         quoteToUpdate.setTelephone(quote.getTelephone());
+        quoteToUpdate.setAddressLine1(quote.getAddressLine1());
+        quoteToUpdate.setAddressLine2(quote.getAddressLine2());
+        quoteToUpdate.setCity(quote.getCity());
+        quoteToUpdate.setVehicleType(quote.getVehicleType());
+        quoteToUpdate.setEngineSize(quote.getEngineSize());
+        quoteToUpdate.setAdditionalDrivers(quote.getAdditionalDrivers());
+        quoteToUpdate.setCommercial(quote.getCommercial());
+        quoteToUpdate.setRegisteredState(quote.getRegisteredState());
+        quoteToUpdate.setCurrentValue(quote.getCurrentValue());
+        quoteToUpdate.setDateRegistered(quote.getDateRegistered());
 
         return quoteService.save(quoteToUpdate);
     }
