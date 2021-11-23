@@ -65,7 +65,7 @@ function CarForm(){
 }}
   validationSchema={validate}
   onSubmit={async(values) =>{
-    axios.post(SERVER_URL, values)
+    axios.post(`${SERVER_URL}/quotes`, values)
          .then((r)=>{
            alert(r.status)
          })
