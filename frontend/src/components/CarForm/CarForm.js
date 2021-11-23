@@ -7,6 +7,7 @@ import './Form.css';
 import axios from 'axios';
 import * as Yup from 'yup';
 import logo from './logo.png';
+import SERVER_URL from "../../utils/Constants";
 
 import {Formik,Form} from 'formik';
 import { Container, Nav } from 'react-bootstrap';
@@ -64,7 +65,7 @@ function CarForm(){
 }}
   validationSchema={validate}
   onSubmit={async(values) =>{
-    axios.post(quoteEndpoint, values)
+    axios.post(SERVER_URL, values)
          .then((r)=>{
            alert(r.status)
          })
