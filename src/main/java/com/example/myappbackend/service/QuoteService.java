@@ -4,6 +4,7 @@ import com.example.myappbackend.model.Quote;
 import com.example.myappbackend.repository.QuoteRepository;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.NoSuchElementException;
