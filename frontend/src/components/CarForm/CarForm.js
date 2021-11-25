@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, {useState} from 'react';
 import  TextField  from '../TextField/TextField';
 import RangeField from '../RangeField/RangeField';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -16,16 +16,20 @@ import SelectVehicle from '../SelectVehicle/SelectVehicle';
 import SelectEngineSize from '../SelectEngineSize/SelectEngineSize';
 import RadioAdditionalDrivers from '../RadioAdditionalDrivers/RadioAdditionalDrivers';
 import { DatePickerField } from '../DatePickerField/DatePickerField';
+import QuoteModal from "../QuoteModal/QuoteModal";
 
 
 function CarForm(){
 
   const date = new Date();
 
-  
+  const [modalShow,setModalShow] =React.useState(false);
+  const [returnedQuote,setReturnedQuote] = useState();
+
 
   const quoteEndpoint = "http://localhost:8080/quotes";
   const testEndpoint = "https://6151d1934a5f22001701d46f.mockapi.io/api/capston"
+  const prodEndpoint = `${SERVER_URL}/quotes`;
 
   const validate = Yup.object({
     prefix: Yup.string().required('Required'),
@@ -61,13 +65,15 @@ function CarForm(){
   registeredState:false,
   currentValue:25000,
   telephone:'',
-  dateRegistered:''
+  dateRegistered:'',
+  quoteAmount:''
 }}
   validationSchema={validate}
   onSubmit={async(values) =>{
-    axios.post(`${SERVER_URL}/quotes`, values)
+    axios.post(quoteEndpoint, values)
          .then((r)=>{
-           alert(r.status)
+           setReturnedQuote(r.data);
+           setModalShow(true);
          })
          .catch((e)=>{
            alert(e)
@@ -105,13 +111,14 @@ function CarForm(){
       <RadioYesNo label="Will the vehicle be used for commercial purposes?" name="commercial" type="radio" />
       <RadioYesNo label="Will the vehicle be used outside the registered state?" name="registeredState" type="radio" />
       <RangeField label="What is the value of the vehicle?" name="currentValue" type="range" min="0" max ="50000" step="1000"/>
-     
       <DatePickerField name="dateRegistered" label="What was the date of the vehicle's first registration?" type="date"/>
       <button className="btn btn-dark mt-3" type="submit">Submit</button>
     </Form> </Container>
+      <QuoteModal show={modalShow} quote={returnedQuote} onHide={()=> setModalShow(false)}/>
     </div>
    
   )}
+
 </Formik>
 );
 

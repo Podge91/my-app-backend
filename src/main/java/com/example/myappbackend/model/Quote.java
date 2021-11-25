@@ -24,6 +24,9 @@ public class Quote {
     private Boolean registeredState;
     private Double currentValue;
     private String dateRegistered;
+    private Double quoteAmount;
+
+
 
     public Quote(){
     }
@@ -186,5 +189,13 @@ public class Quote {
 
     public void setDateRegistered(String dateRegistered) {
         this.dateRegistered = dateRegistered;
+    }
+
+    public Double getQuoteAmount() {
+        return quoteAmount;
+    }
+
+    public void setQuoteAmount(Double quoteAmount) {
+        this.quoteAmount = quoteAmount;
     }
 }

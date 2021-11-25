@@ -22,6 +22,11 @@ public class QuoteService {
     }
 
     public Quote save(Quote quote){
+
+        double quoteAmount = calculateQuote(quote);
+
+        quote.setQuoteAmount(quoteAmount);
+
         return quoteRepository.save(quote);
     }
 

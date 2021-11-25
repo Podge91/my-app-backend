@@ -28,7 +28,9 @@ public class QuoteController {
 
     @PostMapping("/quotes")
     Quote save(@RequestBody Quote quote){
+
         return quoteService.save(quote);
+
     }
 
     @PutMapping("/quotes")
