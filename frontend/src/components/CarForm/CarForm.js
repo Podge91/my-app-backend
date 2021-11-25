@@ -93,7 +93,7 @@ function CarForm(){
           </Nav>
         </Container>
       </Navbar>
-      <pre>{JSON.stringify(formik.values, null, 2)}</pre>
+
       <Container><h1 className="my-4 font-wright-bold-display-4">Car Quote Form</h1>
     <Form>
       <TextField label="Prefix" name="prefix" type="text"/>
@@ -114,7 +114,7 @@ function CarForm(){
       <DatePickerField name="dateRegistered" label="What was the date of the vehicle's first registration?" type="date"/>
       <button className="btn btn-dark mt-3" type="submit">Submit</button>
     </Form> </Container>
-      <QuoteModal show={modalShow} quote={returnedQuote} onHide={()=> setModalShow(false)}/>
+      <QuoteModal backdrop="static" show={modalShow} quote={returnedQuote} onHide={()=> setModalShow(false)}/>
     </div>
    
   )}
