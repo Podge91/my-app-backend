@@ -34,7 +34,10 @@ function Admin(){
       .then((response)=>{
         console.log(response.data);
         setTableData(response.data);
-      }).catch((e)=>{alert(e.response.data.message)});
+      }).catch((e)=>{
+        setTableData([]);
+        alert(e.response.data.message);
+      });
   }
 
   function getUserDelete(e){
