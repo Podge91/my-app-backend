@@ -21,9 +21,9 @@ public class QuoteController {
         this.quoteService = quoteService;
     }
 
-    @GetMapping("/quotes")
-    List<Quote> findAll(){
-        return quoteService.findAll();
+    @GetMapping("/quotes/{id}")
+    Quote find(@PathVariable Long id){
+        return quoteService.find(id);
     }
 
     @PostMapping("/quotes")

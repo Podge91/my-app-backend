@@ -14,6 +14,7 @@ import { Navbar } from 'react-bootstrap';
 import logo from './logo.png';
 
 import axios from 'axios';
+import SERVER_URL from "../../utils/Constants";
 
 function Admin(){
   
@@ -22,17 +23,19 @@ function Admin(){
   const [show, setShow] = useState(false);
   const [phoneNumber,setPhoneNumber] = useState('');
 
+  const quoteEndpoint = "http://localhost:8080/quotes";
+  const prodEndpoint = `${SERVER_URL}/quotes`;
+
   function getUser(e){
     e.preventDefault();
     console.log(ID);
 
-    const endpointURL = `https://6151d1934a5f22001701d46f.mockapi.io/api/capston/${ID}`;
 
-    axios.get(endpointURL)
+    axios.get(`${quoteEndpoint}/${ID}`)
       .then((response)=>{
         console.log(response.data);
         setTableData(response.data);
-      })
+      }).catch((e)=>{console.log(e)});
   }
 
   function getUserDelete(e){
@@ -40,9 +43,8 @@ function Admin(){
     console.log(ID);
     setShow(true);
 
-    const endpointURL = `https://6151d1934a5f22001701d46f.mockapi.io/api/capston/${ID}`;
 
-    axios.get(endpointURL)
+    axios.get(quoteEndpoint)
       .then((response)=>{
         console.log(response.data);
         setTableData(response.data);
@@ -75,9 +77,8 @@ function Admin(){
 
   function deleteUser(){
     if(tableData){
-      const endpointURL = `https://6151d1934a5f22001701d46f.mockapi.io/api/capston/${ID}`;
 
-      axios.delete(endpointURL)
+      axios.delete(quoteEndpoint)
       .then(()=>{window.alert("User Deleted!")})
       .catch((err)=>{console.log(err)});
     }
@@ -86,10 +87,9 @@ function Admin(){
   function putUserPhone(e){
     e.preventDefault();
 
-    const endpointURL = `https://6151d1934a5f22001701d46f.mockapi.io/api/capston/${ID}`;
 
     if(phoneNumber.length === 11){
-      axios.put(endpointURL,{telephone:phoneNumber})
+      axios.put(quoteEndpoint,{telephone:phoneNumber})
         .then((response)=>{console.log(response)})
         .catch((err)=>{console.log(err)});
     }else{
@@ -139,8 +139,8 @@ function Admin(){
           <tbody>
               <tr>
               <td>{tableData.id}</td>
-              <td>{tableData.fName}</td>
-              <td>{tableData.lName}</td>
+              <td>{tableData.firstName}</td>
+              <td>{tableData.lastName}</td>
               <td>{tableData.vehicleType}</td>
             </tr>
           </tbody>
