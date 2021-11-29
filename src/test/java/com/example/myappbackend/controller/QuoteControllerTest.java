@@ -31,7 +31,7 @@ class QuoteControllerTest {
     @Test
     void givenDBInitialisedWith1Record_whenGETQuotes_shouldreturn1item()throws Exception {
 
-        final var mvcResult = mockMvc.perform(get("/quotes"))
+        final var mvcResult = mockMvc.perform(get("/quotes/all/"))
                                                 .andDo(print())
                                                 .andReturn();
 

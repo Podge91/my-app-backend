@@ -21,9 +21,22 @@ public class QuoteController {
         this.quoteService = quoteService;
     }
 
+    @GetMapping("/quotes/all/")
+    List<Quote> findAll(){
+        return quoteService.findAll();
+    }
+
     @GetMapping("/quotes/{id}")
     Quote find(@PathVariable Long id){
-        return quoteService.find(id);
+
+        Quote quoteToFind;
+
+        try{
+            quoteToFind = quoteService.find(id);
+        } catch (NoSuchElementException nse) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ID_NOT_FOUND_ERROR_MSG + id, nse);
+        }
+        return quoteToFind;
     }
 
     @PostMapping("/quotes")

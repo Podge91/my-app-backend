@@ -30,12 +30,11 @@ function Admin(){
     e.preventDefault();
     console.log(ID);
 
-
     axios.get(`${quoteEndpoint}/${ID}`)
       .then((response)=>{
         console.log(response.data);
         setTableData(response.data);
-      }).catch((e)=>{console.log(e)});
+      }).catch((e)=>{alert(e.response.data.message)});
   }
 
   function getUserDelete(e){
@@ -44,11 +43,12 @@ function Admin(){
     setShow(true);
 
 
-    axios.get(quoteEndpoint)
+    axios.get(`${quoteEndpoint}/${ID}`)
       .then((response)=>{
         console.log(response.data);
         setTableData(response.data);
       })
+      .catch((e)=>{alert(e)});
 
   }
 
@@ -61,6 +61,8 @@ function Admin(){
         <p>
           Are you sure you want to delete the user?
         </p>
+        <p>ID: {ID}</p>
+        <p>Name: {tableData.prefix} {tableData.firstName} {tableData.lastName}</p>
         <hr />
         <div className="d-flex justify-content-end">
           <Button onClick={() => {setShow(false);
@@ -78,7 +80,7 @@ function Admin(){
   function deleteUser(){
     if(tableData){
 
-      axios.delete(quoteEndpoint)
+      axios.delete(`${quoteEndpoint}/${ID}`)
       .then(()=>{window.alert("User Deleted!")})
       .catch((err)=>{console.log(err)});
     }
@@ -95,6 +97,10 @@ function Admin(){
     }else{
       window.alert("Invalid Phone Number!");
     }
+  }
+
+  function capitaliseFirstLetter(s){
+    return s.charAt(0).toUpperCase() + s.slice(1);
   }
   
 
@@ -133,7 +139,7 @@ function Admin(){
               <th>ID</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>Car Type</th>
+              <th>Vehicle Type</th>
             </tr>
           </thead>
           <tbody>
