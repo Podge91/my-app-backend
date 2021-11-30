@@ -74,6 +74,22 @@ public class QuoteController {
         return quoteService.save(quoteToUpdate);
     }
 
+    @PutMapping("/quotes/updatePhone")
+    Quote updatePhone(@RequestBody Quote quote){
+        Quote quoteToUpdate;
+
+        try{
+            quoteToUpdate = quoteService.find(quote.getId());
+        } catch (NoSuchElementException nse){
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, ID_NOT_FOUND_ERROR_MSG + quote.getId(), nse
+            );
+        }
+        quoteToUpdate.setTelephone(quote.getTelephone());
+
+        return quoteService.save(quoteToUpdate);
+    }
+
     @DeleteMapping("/quotes/{id}")
     void delete(@PathVariable Long id){
         Quote quoteToDelete;

@@ -22,6 +22,7 @@ function Admin(){
   const [ID,setID] = useState('');
   const [show, setShow] = useState(false);
   const [phoneNumber,setPhoneNumber] = useState('');
+  const [quoteData,setQuoteData] = useState([]);
 
   const quoteEndpoint = "http://localhost:8080/quotes";
   const prodEndpoint = `${SERVER_URL}/quotes`;
@@ -92,9 +93,8 @@ function Admin(){
   function putUserPhone(e){
     e.preventDefault();
 
-
     if(phoneNumber.length === 11){
-      axios.put(quoteEndpoint,{telephone:phoneNumber})
+      axios.put(`${quoteEndpoint}/updatePhone`,{telephone:phoneNumber,id:ID})
         .then((response)=>{console.log(response)})
         .catch((err)=>{console.log(err)});
     }else{
