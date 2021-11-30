@@ -15,6 +15,7 @@ import logo from './logo.png';
 
 import axios from 'axios';
 import SERVER_URL from "../../utils/Constants";
+import PhoneModal from "../PhoneModal/PhoneModal";
 
 function Admin(){
   
@@ -23,6 +24,7 @@ function Admin(){
   const [show, setShow] = useState(false);
   const [phoneNumber,setPhoneNumber] = useState('');
   const [quoteData,setQuoteData] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
 
   const quoteEndpoint = "http://localhost:8080/quotes";
   const prodEndpoint = `${SERVER_URL}/quotes`;
@@ -95,7 +97,10 @@ function Admin(){
 
     if(phoneNumber.length === 11){
       axios.put(`${quoteEndpoint}/updatePhone`,{telephone:phoneNumber,id:ID})
-        .then((response)=>{console.log(response)})
+        .then((response)=>{
+          setQuoteData(response.data);
+          setModalShow(true);
+        })
         .catch((err)=>{console.log(err)});
     }else{
       window.alert("Invalid Phone Number!");
@@ -193,7 +198,10 @@ function Admin(){
       </Form>
     </Accordion.Body>
   </Accordion.Item>
-</Accordion></>);
+</Accordion>
+<PhoneModal quote={quoteData} show={modalShow} onHide={()=>{setModalShow(false)}}/>
+
+  </>);
 }
 
 export default Admin;
