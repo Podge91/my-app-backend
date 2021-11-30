@@ -33,7 +33,7 @@ function Admin(){
     e.preventDefault();
     console.log(ID);
 
-    axios.get(`${quoteEndpoint}/${ID}`)
+    axios.get(`${prodEndpoint}/${ID}`)
       .then((response)=>{
         console.log(response.data);
         setTableData(response.data);
@@ -49,7 +49,7 @@ function Admin(){
     setShow(true);
 
 
-    axios.get(`${quoteEndpoint}/${ID}`)
+    axios.get(`${prodEndpoint}/${ID}`)
       .then((response)=>{
         console.log(response.data);
         setTableData(response.data);
@@ -86,7 +86,7 @@ function Admin(){
   function deleteUser(){
     if(tableData){
 
-      axios.delete(`${quoteEndpoint}/${ID}`)
+      axios.delete(`${prodEndpoint}/${ID}`)
       .then(()=>{window.alert("User Deleted!")})
       .catch((err)=>{console.log(err)});
     }
@@ -96,7 +96,7 @@ function Admin(){
     e.preventDefault();
 
     if(phoneNumber.length === 11){
-      axios.put(`${quoteEndpoint}/updatePhone`,{telephone:phoneNumber,id:ID})
+      axios.put(`${prodEndpoint}/updatePhone`,{telephone:phoneNumber,id:ID})
         .then((response)=>{
           setQuoteData(response.data);
           setModalShow(true);
@@ -107,10 +107,6 @@ function Admin(){
     }
   }
 
-  function capitaliseFirstLetter(s){
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  }
-  
 
   return(<>
     <Navbar bg="primary" variant="dark">

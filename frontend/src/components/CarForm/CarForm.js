@@ -28,7 +28,6 @@ function CarForm(){
 
 
   const quoteEndpoint = "http://localhost:8080/quotes";
-  const testEndpoint = "https://6151d1934a5f22001701d46f.mockapi.io/api/capston"
   const prodEndpoint = `${SERVER_URL}/quotes`;
 
   const validate = Yup.object({
@@ -70,7 +69,7 @@ function CarForm(){
 }}
   validationSchema={validate}
   onSubmit={async(values) =>{
-    axios.post(quoteEndpoint, values)
+    axios.post(prodEndpoint, values)
          .then((r)=>{
            setReturnedQuote(r.data);
            setModalShow(true);
