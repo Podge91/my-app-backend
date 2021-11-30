@@ -77,7 +77,7 @@ function CarForm(){
          })
          .catch((e)=>{
            alert(e)
-         })
+         });
   }}
 >
   {formik =>(

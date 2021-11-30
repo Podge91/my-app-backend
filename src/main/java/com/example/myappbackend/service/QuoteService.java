@@ -40,7 +40,8 @@ public class QuoteService {
     }
 
     public double calculateQuote(Quote quote){
-        double totalQuote = 100*calculateVehicleTypeFactor(quote)*calculateEngineSizeFactor(quote)
+        double totalQuote = 100*calculateVehicleTypeFactor(quote)
+                *calculateEngineSizeFactor(quote)
                 *calculateAdditionalDriversFactor(quote)
                 *calculateCommercialUseFactor(quote)
                 *calculateOutsideStateUseFactor(quote)

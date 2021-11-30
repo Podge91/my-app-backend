@@ -62,11 +62,63 @@ class QuoteServiceTest {
                 () -> assertEquals(dateRegistered,quote.getDateRegistered())
         );
     }
-/**
+
+    @Test
+    void save(){
+        when(quoteRepository.save(quote)).thenReturn(quote);
+
+        Quote saveQuote = quoteService.save(quote);
+
+        assertEquals(quote,saveQuote);
+    }
+
     @Test
     void calculateQuote(){
-        assertEquals(100,quoteService.calculateQuote(quote));
+        when(quoteRepository.save(quote)).thenReturn(quote);
+
+        Quote calculatedQuote = quoteService.save(quote);
+
+        assertEquals(quote.getQuoteAmount(),calculatedQuote.getQuoteAmount());
     }
- **/
+
+    @Test
+    void testFactors1(){
+
+        Double testFactor1Result = 371.71;
+
+        quote.setVehicleType("hatchback");
+        quote.setEngineSize("1600");
+        quote.setAdditionalDrivers("3");
+        quote.setCommercial(true);
+        quote.setRegisteredState(true);
+        quote.setCurrentValue(5000.00);
+
+        when(quoteRepository.save(quote)).thenReturn(quote);
+
+        Quote calculatedQuote = quoteService.save(quote);
+
+        assertEquals(testFactor1Result,calculatedQuote.getQuoteAmount());
+    }
+
+    @Test
+    void testFactors2(){
+        Double testFactor2Result = 514.80;
+
+        quote.setVehicleType("cabriolet");
+        quote.setEngineSize("3000");
+        quote.setAdditionalDrivers("1");
+        quote.setCommercial(false);
+        quote.setRegisteredState(false);
+        quote.setCurrentValue(15000.00);
+
+        when(quoteRepository.save(quote)).thenReturn(quote);
+
+        Quote calculatedQuote = quoteService.save(quote);
+
+        assertEquals(testFactor2Result,calculatedQuote.getQuoteAmount());
+
+    }
+
+
 
 }
