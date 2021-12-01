@@ -141,6 +141,7 @@ function Admin(){
               <th>First Name</th>
               <th>Last Name</th>
               <th>Vehicle Type</th>
+              <th>Tel. Number</th>
               <th>Quote Amount</th>
             </tr>
           </thead>
@@ -150,7 +151,8 @@ function Admin(){
               <td>{tableData.firstName}</td>
               <td>{tableData.lastName}</td>
               <td>{tableData.vehicleType}</td>
-              <td>£ {tableData.quoteAmount}</td>
+              <td>{tableData.telephone}</td>
+              <td>$ {tableData.quoteAmount}</td>
             </tr>
           </tbody>
         </Table>
