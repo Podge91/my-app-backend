@@ -45,16 +45,13 @@ function Admin(){
 
   function getUserDelete(e){
     e.preventDefault();
-    console.log(ID);
-    setShow(true);
-
 
     axios.get(`${prodEndpoint}/${ID}`)
       .then((response)=>{
-        console.log(response.data);
+        setShow(true);
         setTableData(response.data);
       })
-      .catch((e)=>{alert(e)});
+      .catch((e)=>{alert(e.response.data.message)});
 
   }
 
