@@ -5,9 +5,6 @@ def dockerImageTag = "${projectName}:${version}"
 pipeline {
   agent any
 
-  tools{
-    maven 'Maven 3.6.3'
-  }
 
   stages {
      stage('Build docker image') {
@@ -16,11 +13,6 @@ pipeline {
           }
       }
 
-      stage('Run Application Tests'){
-        steps{
-            sh "mvn -Dmaven.test.skip=false clean package"
-        }
-      }
 
 
     stage('Deploy Container To Openshift') {
